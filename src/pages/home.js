@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux"
 import { ImageCarousel } from "../components"
 
-
 export default function Home (){
 
     const myData = useSelector(state => state.carousselData)
@@ -10,9 +9,6 @@ export default function Home (){
         <div className="container">
             <h1>Home</h1>
             <ImageCarousel data={myData} />
-            {/* {myData.map((element, index) => (
-                <p>{element.title}</p>
-            ))} */}
         </div>
     )
 }

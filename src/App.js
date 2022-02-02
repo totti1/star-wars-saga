@@ -8,7 +8,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import { Home } from "./pages";
+import { Home, Lister } from "./pages";
 
 
 function App() {
@@ -30,11 +30,9 @@ function App() {
         <Routes>
           {/* <Route path="/about">
             <About />
-          </Route>
-          <Route path="/topics">
-            <Topics />
           </Route> */}
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Lister/>} />
+          <Route path="/home" element={<Home/>} />
         </Routes>
       </div>
     </Router>
