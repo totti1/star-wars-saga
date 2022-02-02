@@ -8,7 +8,7 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import { Home, Lister } from "./pages";
+import { Home, Lister, SingleChar } from "./pages";
 
 
 function App() {
@@ -31,8 +31,9 @@ function App() {
           {/* <Route path="/about">
             <About />
           </Route> */}
-          <Route path="/" element={<Lister/>} />
-          <Route path="/home" element={<Home/>} />
+          <Route path="/:id" element={<SingleChar/>} />
+          <Route path="/list/:id" element={<Lister/>} />
+          <Route path="/home/" element={<Home/>} />
         </Routes>
       </div>
     </Router>

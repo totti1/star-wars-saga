@@ -1,14 +1,20 @@
-import { useSelector } from "react-redux"
+import { useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { ImageCarousel } from "../components"
+import carousselData from "../redux/reducers/caroussel"
 
 export default function Home (){
 
-    const myData = useSelector(state => state.carousselData)
-    console.log(myData)
+    const dispatch = useDispatch()
+    const myData = useSelector(state => state)
+    useEffect(() => {
+        dispatch(carousselData())
+    }, [dispatch]);
+    console.log(myData.singleChar.list)
     return(
         <div className="container">
             <h1>Home</h1>
-            <ImageCarousel data={myData} />
+            <ImageCarousel data={myData.carousselData} />
         </div>
     )
 }

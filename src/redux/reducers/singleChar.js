@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { apiCallBegan } from "./api";
+import { apiCallBegan } from "../api";
 
 const slice = createSlice({
-    name: "peoples",
+    name: "singleChar",
     initialState: {
         list: [],
         loading: true,
@@ -30,8 +30,8 @@ const { dataRequested, dataReceived, dataRequestFailed } = slice.actions;
 
 // const url = `?page=${page}`;
 
-export const loadData = (page) => (dispatch) => {
-    const url = `?page=${page}`;
+export const loadSingleCharacter = (id) => (dispatch) => {
+    const url = `${id}`;
     return dispatch(
         apiCallBegan({
             url,
