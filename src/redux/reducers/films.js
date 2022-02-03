@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from "../api";
 
 const slice = createSlice({
-    name: "peoples",
+    name: "films",
     initialState: {
         list: [],
         loading: true,
@@ -30,8 +30,8 @@ const { dataRequested, dataReceived, dataRequestFailed } = slice.actions;
 
 // const url = `?page=${page}`;
 
-export const loadData = (page) => (dispatch) => {
-    const url = `people/?page=${page}`;
+export const loadFilms = (id) => (dispatch) => {
+    const url = `films/${id}`;
     return dispatch(
         apiCallBegan({
             url,
