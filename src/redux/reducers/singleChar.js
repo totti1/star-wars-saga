@@ -31,7 +31,7 @@ const { dataRequested, dataReceived, dataRequestFailed } = slice.actions;
 // const url = `?page=${page}`;
 
 export const loadSingleCharacter = (id) => (dispatch) => {
-    const url = `${id}`;
+    const url = `people/${id}`;
     return dispatch(
         apiCallBegan({
             url,

@@ -6,35 +6,28 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
+  // Link,
 } from "react-router-dom";
+import { AppBar, FooterPage } from './components';
 import { Home, Lister, SingleChar } from "./pages";
+
 
 
 function App() {
   return (
     <Router>
       <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/topics">Topics</Link>
-          </li>
-        </ul>
+        <AppBar />
 
         <Routes>
           {/* <Route path="/about">
             <About />
           </Route> */}
-          <Route path="/:id" element={<SingleChar/>} />
+          <Route path="/single/character/:id" element={<SingleChar/>} />
           <Route path="/list/:id" element={<Lister/>} />
-          <Route path="/home/" element={<Home/>} />
+          <Route path="/" element={<Home/>} />
         </Routes>
+        <FooterPage />
       </div>
     </Router>
   );

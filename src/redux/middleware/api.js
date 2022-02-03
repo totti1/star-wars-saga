@@ -16,7 +16,7 @@ const api =
 
         try {
             const response = await axios.request({
-                baseURL: "https://swapi.dev/api/people/",
+                baseURL: "https://swapi.dev/api/",
                 url,
                 method,
                 data,
