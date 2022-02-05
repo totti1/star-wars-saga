@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import React,{ useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { loadSingleCharacter } from "../redux/reducers/singleChar";
 import { LinearProgress, IconButton } from '@mui/material';

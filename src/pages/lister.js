@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react"
+import React,{ useEffect,useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { loadData } from "../redux/reducers/peoples";
 import {LinearProgress} from '@mui/material';

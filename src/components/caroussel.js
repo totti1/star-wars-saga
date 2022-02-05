@@ -1,10 +1,11 @@
+import React from 'react'
 import { Carousel } from 'react-bootstrap';
 import './styles/caroussel.css'
 
 export default function ImageCarousel(props) {
 
     return (
-        <Carousel fade>
+        <Carousel fade style={{"margin-top": '20px'}}>
             {props.data.map((item, index) => (
                 <Carousel.Item>
                     <img
