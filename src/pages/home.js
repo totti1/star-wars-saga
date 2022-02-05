@@ -10,7 +10,6 @@ export default function Home (){
     useEffect(() => {
         dispatch(carousselData())
     }, [dispatch]);
-    console.log(myData.singleChar.list)
     return(
         <div className="container-fluid">
             {/* <h1>Home</h1> */}

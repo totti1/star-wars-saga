@@ -35,15 +35,15 @@ const Search = styled('div')(({ theme }) => ({
   },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
+// const SearchIconWrapper = styled('div')(({ theme }) => ({
+//   padding: theme.spacing(0, 2),
+//   height: '100%',
+//   position: 'absolute',
+//   pointerEvents: 'none',
+//   display: 'flex',
+//   alignItems: 'center',
+//   justifyContent: 'center',
+// }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
@@ -63,13 +63,10 @@ export default function PrimaryAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [page, setPage] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [searchTerm, setSearchTerm]=React.useState("")
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-//   const handleProfileMenuOpen = (event) => {
-//     setAnchorEl(event.currentTarget);
-//   };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -90,6 +87,11 @@ export default function PrimaryAppBar(props) {
   const handleClose = () => {
     setPage(null);
   };
+
+  const handleOnChange = () => {
+    window.location=`/search-results/${searchTerm}`;
+  }
+
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -183,13 +185,17 @@ export default function PrimaryAppBar(props) {
             
           </Typography>
           <Search>
-            <SearchIconWrapper>
+            {/* <SearchIconWrapper>
               <SearchIcon />
-            </SearchIconWrapper>
+            </SearchIconWrapper> */}
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              onChange={(e)=> setSearchTerm(e.target.value)}
             />
+            <IconButton sx={{color: 'white'}} onClick={handleOnChange}>
+              <SearchIcon />
+            </IconButton>
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

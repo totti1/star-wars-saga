@@ -1,17 +1,18 @@
 import React,{ useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { loadSingleCharacter } from "../redux/reducers/singleChar";
-import { LinearProgress, IconButton } from '@mui/material';
-import { useParams } from 'react-router-dom';
-import { Typography } from "@mui/material";
+import { LinearProgress, IconButton, Typography } from '@mui/material';
+import { useParams, useNavigate } from 'react-router-dom';
 import { FilmReviewCard } from "../components";
 import axios from "axios";
 import "./styles/singleChar.css"
 import KeyboardArrowDownTwoToneIcon from '@mui/icons-material/KeyboardArrowDownTwoTone';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import * as Scroll from 'react-scroll';
 
-let scroll    = Scroll.animateScroll;
+let scroll = Scroll.animateScroll;
 
+/* eslint-disable no-alert, no-console */
 export default function SingleChar (){
     const [filmsloaded, setFilmsloaded] = useState(false)
     const [movies, setMovies] = useState([])
@@ -22,10 +23,10 @@ export default function SingleChar (){
 
     useEffect(() => {
         if(parseInt(id) >= 17){
-            id= parseInt(id)+1
+            id= parseInt(id)+1 
         }
         dispatch(loadSingleCharacter(id))
-        localStorage.setItem("singleCharId", JSON.stringify(id))
+        
     }, [dispatch]);
 
     const { list } = myData.singleChar
@@ -43,17 +44,33 @@ export default function SingleChar (){
                 }
             )
             .catch(console.log)
+            localStorage.setItem("singleCharId", JSON.stringify(list))
             scroll.scrollToBottom();
         }
         
     }
-    console.log(movies)
-    console.log(filmsloaded)
+
+    let navigate = useNavigate();
     
     if(myData.singleChar.loading === false){
 
         return(
             <div>
+                <IconButton 
+                    sx={{
+                        position: 'absolute',
+                        height: 50,
+                        width: 50,
+                        backgroundColor: 'white',
+                        fontWeight: 'bold',
+                        marginTop: 2,
+                        left: 50
+                        
+                    }}
+                    onClick={()=> navigate(-1)}
+                >
+                    <ArrowBackIcon />
+                </IconButton>
                 <div className="bg-img">
                     <Typography gutterBottom variant="h4" sx={{ fontSize: 36, fontWeight: 'bold' }}>
                         Let me Introduce you to,
@@ -124,3 +141,4 @@ export default function SingleChar (){
         return <LinearProgress />
     }
 }
+/* eslint-enable no-alert */

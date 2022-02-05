@@ -9,7 +9,7 @@ export default function ImageCarousel(props) {
             {props.data.map((item, index) => (
                 <Carousel.Item>
                     <img
-                    className="d-block w-100 img-caroussel"
+                    className="d-block w-100"
                     src={item.imageSrc}
                     alt={item.title}
                     />

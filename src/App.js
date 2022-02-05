@@ -30,6 +30,7 @@ function App() {
         <AppBar lastVisitedData={data}/>
 
         <Routes>
+          <Route path="/search-results/:term" element={<SingleChar/>} />
           <Route path="/single/character/:id" element={<SingleChar/>} />
           <Route path="/list/:id" element={<Lister/>} />
           <Route path="/" element={<Home/>} />
