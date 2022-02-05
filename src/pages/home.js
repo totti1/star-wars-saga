@@ -12,8 +12,8 @@ export default function Home (){
     }, [dispatch]);
     console.log(myData.singleChar.list)
     return(
-        <div className="container">
-            <h1>Home</h1>
+        <div className="container-fluid">
+            {/* <h1>Home</h1> */}
             <ImageCarousel data={myData.carousselData} />
         </div>
     )
