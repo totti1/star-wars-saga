@@ -25,7 +25,9 @@ export default function SingleChar (){
             id= parseInt(id)+1
         }
         dispatch(loadSingleCharacter(id))
+        localStorage.setItem("singleCharId", JSON.stringify(id))
     }, [dispatch]);
+
     const { list } = myData.singleChar
 
     const getLevel = () => {

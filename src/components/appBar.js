@@ -59,8 +59,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimaryAppBar() {
+export default function PrimaryAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [page, setPage] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
@@ -82,7 +83,13 @@ export default function PrimaryAppBar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
+  const open = Boolean(page);
+  const handleClick = (event) => {
+    setPage(event.currentTarget);
+  };
+  const handleClose = () => {
+    setPage(null);
+  };
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -198,6 +205,12 @@ export default function PrimaryAppBar() {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
+              id="basic-button"
+              aria-controls={open ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+              onClick={handleClick}
+
             >
               <Badge badgeContent={3} color="error">
                 <ScheduleIcon />
@@ -217,6 +230,20 @@ export default function PrimaryAppBar() {
             </IconButton>
           </Box>
         </Toolbar>
+        <Menu
+          id="basic-menu"
+          anchorEl={page}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+        >
+          {props.lastVisitedData.map((item, index)=>{
+            return (
+              <MenuItem onClick={handleClose}>{item.name}</MenuItem>
+            )})}
+        </Menu>
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
