@@ -1,19 +1,15 @@
-import React,{ useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
+import React,{ useState } from "react"
 import { ImageCarousel } from "../components"
-import carousselData from "../redux/reducers/caroussel"
+import carousselData from "../mock/caroussel"
+// import carousselData from "../redux/reducers/caroussel"
+
 
 export default function Home (){
 
-    const dispatch = useDispatch()
-    const myData = useSelector(state => state)
-    useEffect(() => {
-        dispatch(carousselData())
-    }, [dispatch]);
+    const [data] = useState(carousselData)
     return(
         <div className="container-fluid">
-            {/* <h1>Home</h1> */}
-            <ImageCarousel data={myData.carousselData} />
+            <ImageCarousel data={data} />
         </div>
     )
 }
