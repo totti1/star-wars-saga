@@ -1,6 +1,6 @@
 import React,{ useState } from "react"
 import { ImageCarousel } from "../components"
-import carousselData from "../mock/caroussel"
+import {carousselData} from "../mock/caroussel"
 // import carousselData from "../redux/reducers/caroussel"
 
 

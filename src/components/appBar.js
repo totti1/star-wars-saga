@@ -247,7 +247,7 @@ export default function PrimaryAppBar(props) {
         >
           {props.lastVisitedData.map((item, index)=>{
             return (
-              <MenuItem onClick={handleClose}>{item.name}</MenuItem>
+              <MenuItem onClick={()=> window.location=`/single/character/${item.id}`}>{item.charData.name}</MenuItem>
             )})}
         </Menu>
       </AppBar>

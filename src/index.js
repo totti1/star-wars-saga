@@ -16,11 +16,13 @@ const myStore = store();
 
 
 ReactDOM.render(
-  <Provider store={myStore}>
+  
     <React.StrictMode>
+      <Provider store={myStore}>
       <App />
-    </React.StrictMode>
-  </Provider>,
+      </Provider>
+    </React.StrictMode>,
+  // </Provider>,
   document.getElementById('root')
 );
 

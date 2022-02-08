@@ -9,6 +9,8 @@ import "./styles/singleChar.css"
 import KeyboardArrowDownTwoToneIcon from '@mui/icons-material/KeyboardArrowDownTwoTone';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import * as Scroll from 'react-scroll';
+import { prepare } from "../redux/reducers/lastVisited";
+
 
 let scroll = Scroll.animateScroll;
 
@@ -30,8 +32,9 @@ export default function SingleChar (){
     }, [dispatch]);
 
     const { list } = myData.singleChar
-
+    
     const getLevel = () => {
+        dispatch(prepare({id:id, charData:list}))
         if(list.films){
             let promiseArray = list.films.map( url=> axios.get(url) );
             Promise.all( promiseArray )

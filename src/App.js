@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React,{useState} from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,27 +7,18 @@ import {
 } from "react-router-dom";
 import { AppBar, FooterPage } from './components';
 import { Home, Lister, SingleChar } from "./pages";
-import { useDispatch, useSelector } from "react-redux"
-import { loadSingleCharacter } from "./redux/reducers/singleChar";
+import { useSelector } from "react-redux"
+// import { loadSingleCharacter } from "./redux/reducers/singleChar";
 
 
 function App() {
-  const dispatch = useDispatch()
-  const data = []
-  const myData = useSelector(state => state)
+  const myData = useSelector(state => state.lastVisited)
 
-  useState(() => {
-    // getting stored value
-    const saved = localStorage.getItem("singleCharId");
-    const id = JSON.parse(saved);
-    dispatch(loadSingleCharacter(id))
-    
-  });
-  data.push(myData.singleChar.list)
+  console.log(myData)
   return (
     <Router>
       <div>
-        <AppBar lastVisitedData={data}/>
+        <AppBar lastVisitedData={myData.list}/>
 
         <Routes>
           <Route path="/search-results/:term" element={<SingleChar/>} />

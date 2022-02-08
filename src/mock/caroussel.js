@@ -1,4 +1,4 @@
-const carousselData = [
+export const carousselData = [
   {
     imageSrc:
     'https://i0.wp.com/thefutureoftheforce.com/wp-content/uploads/2019/10/img_3686.jpg?fit=1920%2C1080&ssl=1',
@@ -50,4 +50,3 @@ const carousselData = [
     title: 'Star Wars Rogue One',
   },
 ]
-export default carousselData
