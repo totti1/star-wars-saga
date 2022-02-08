@@ -218,9 +218,7 @@ export default function PrimaryAppBar(props) {
               onClick={handleClick}
 
             >
-              <Badge badgeContent={3} color="error">
-                <ScheduleIcon />
-              </Badge>
+              <ScheduleIcon />
             </IconButton>
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>

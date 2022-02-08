@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from "react";
+import React,{useState} from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,13 +12,20 @@ import { useSelector } from "react-redux"
 
 
 function App() {
-  const myData = useSelector(state => state.lastVisited)
-
-  console.log(myData)
+  // const myData = useSelector(state => state.lastVisited)
+  let myData = []
+  let CURRENT = localStorage.getItem("singleCharId")
+  if(CURRENT === null){
+    console.log(typeof CURRENT)
+    myData=[]
+  }else{
+    CURRENT= JSON.parse(CURRENT)
+    myData=CURRENT.slice(-4, -1)
+  }
   return (
     <Router>
       <div>
-        <AppBar lastVisitedData={myData.list}/>
+        <AppBar lastVisitedData={myData}/>
 
         <Routes>
           <Route path="/search-results/:term" element={<SingleChar/>} />

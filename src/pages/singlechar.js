@@ -47,7 +47,24 @@ export default function SingleChar (){
                 }
             )
             .catch(console.log)
-            localStorage.setItem("singleCharId", JSON.stringify(list))
+
+            
+            let CURRENT = localStorage.getItem("singleCharId")
+            let arraydata =[]
+            console.log(typeof CURRENT)
+            if (CURRENT === null){
+                arraydata.push({id:id, charData:list})
+                localStorage.setItem("singleCharId", JSON.stringify(arraydata))
+            }else{
+                CURRENT= JSON.parse(CURRENT)
+                if(!CURRENT.some((current)=> current.id === id)){
+                    CURRENT.push({id:id, charData:list})
+                    localStorage.setItem("singleCharId", JSON.stringify(CURRENT))
+                }
+            }
+            // let arraydata= []
+            // arraydata.push(CURRENT)
+            // arraydata.push(list)
             scroll.scrollToBottom();
         }
         
