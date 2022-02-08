@@ -22,19 +22,20 @@ export default function SingleChar (){
     const dispatch = useDispatch()
     const myData = useSelector(state => state)
     // const trackButton = useRef();
+    const { list } = myData.singleChar
 
     useEffect(() => {
         if(parseInt(id) >= 17){
             id= parseInt(id)+1 
         }
         dispatch(loadSingleCharacter(id))
-        
+        dispatch(prepare({id:id, charData:list}))
     }, [dispatch]);
 
-    const { list } = myData.singleChar
     
-    const getLevel = () => {
-        dispatch(prepare({id:id, charData:list}))
+    
+    const getMovies = () => {
+        
         if(list.films){
             let promiseArray = list.films.map( url=> axios.get(url) );
             Promise.all( promiseArray )
@@ -51,7 +52,7 @@ export default function SingleChar (){
             
             let CURRENT = localStorage.getItem("singleCharId")
             let arraydata =[]
-            console.log(typeof CURRENT)
+            // console.log(myData.lastVisited)
             if (CURRENT === null){
                 arraydata.push({id:id, charData:list})
                 localStorage.setItem("singleCharId", JSON.stringify(arraydata))
@@ -62,12 +63,11 @@ export default function SingleChar (){
                     localStorage.setItem("singleCharId", JSON.stringify(CURRENT))
                 }
             }
-            // let arraydata= []
-            // arraydata.push(CURRENT)
-            // arraydata.push(list)
-            scroll.scrollToBottom();
         }
         
+    }
+    const scrollBtn = ()=>{
+        scroll.scrollToBottom();
     }
 
     let navigate = useNavigate();
@@ -91,7 +91,7 @@ export default function SingleChar (){
                 >
                     <ArrowBackIcon />
                 </IconButton>
-                <div className="bg-img">
+                <div className="bg-img" onMouseEnter={getMovies}>
                     <Typography gutterBottom variant="h4" sx={{ fontSize: 36, fontWeight: 'bold' }}>
                         Let me Introduce you to,
                     </Typography>
@@ -122,7 +122,7 @@ export default function SingleChar (){
                     <IconButton 
                         aria-label="arrow" 
                         sx={{color: 'white', fontSize: 50, marginTop: 10 }}
-                        onClick={()=> getLevel()}
+                        onClick={scrollBtn}
                     >
                         <KeyboardArrowDownTwoToneIcon fontSize="inherit" />
                     </IconButton>
@@ -139,7 +139,7 @@ export default function SingleChar (){
                         {filmsloaded ? 
                             movies.map((item, index)=>{
                             return (
-                                <div className="col-md-3">
+                                <div className="col-lg-3" key={index}>
                                     <FilmReviewCard
                                         avatar={item.title.slice(0,1)}
                                         title={item.title}

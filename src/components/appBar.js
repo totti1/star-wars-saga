@@ -131,12 +131,13 @@ export default function PrimaryAppBar(props) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem
+        component={Link}
+        to= "/list/1"
+      >
         <IconButton 
             size="large" 
             color="inherit"
-            component={Link}
-            to= "/list/1"
         >
           <ViewListIcon />
         </IconButton>
@@ -245,7 +246,7 @@ export default function PrimaryAppBar(props) {
         >
           {props.lastVisitedData.map((item, index)=>{
             return (
-              <MenuItem onClick={()=> window.location=`/single/character/${item.id}`}>{item.charData.name}</MenuItem>
+              <MenuItem key={index} onClick={()=> window.location=`/single/character/${item.id}`}>{item.charData.name}</MenuItem>
             )})}
         </Menu>
       </AppBar>
