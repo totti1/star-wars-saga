@@ -9,7 +9,7 @@ import "./styles/singleChar.css"
 import KeyboardArrowDownTwoToneIcon from '@mui/icons-material/KeyboardArrowDownTwoTone';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import * as Scroll from 'react-scroll';
-import { prepare } from "../redux/reducers/lastVisited";
+// import { prepare } from "../redux/reducers/lastVisited";
 
 
 let scroll = Scroll.animateScroll;
@@ -29,7 +29,7 @@ export default function SingleChar (){
             id= parseInt(id)+1 
         }
         dispatch(loadSingleCharacter(id))
-        dispatch(prepare({id:id, charData:list}))
+        // dispatch(prepare({id:id, charData:list}))
     }, [dispatch]);
 
     
