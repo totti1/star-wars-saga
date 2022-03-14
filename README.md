@@ -8,7 +8,7 @@ Aristote Katy
 This is a React web application that provide informations on the star wars characters and a bit of the franchise.
 
 ## Live Link
-https://star-wars-saga-18c67.web.app/
+https://star-wars-saga-18c67.firebaseapp.com/
 
 ## Technologies used
 Javascript
